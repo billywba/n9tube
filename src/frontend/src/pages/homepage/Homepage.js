@@ -1,6 +1,11 @@
+import { Link } from "react-router-dom";
+
 function Homepage() {
   return (
-    <h1 className="Homepage-header">N9TUBE</h1>
+    <>
+      <h1>N9TUBE</h1>
+      <Link to="/room">room</Link>
+    </>
   );
 }
 
