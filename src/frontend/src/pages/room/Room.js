@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ReactPlayer from 'react-player/youtube'
-import VideoSearchInput from '../video/VideoSearch';
+import VideoSearchInput from '../../components/video/VideoSearch';
 
 function Room() {
 
