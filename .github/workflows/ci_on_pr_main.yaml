@@ -7,6 +7,10 @@ on:
 
 jobs:
   integrate_pull_request:
+    defaults:
+      run:
+       working-directory: ./src/frontend
+
     runs-on: ubuntu-latest
     
     steps:
@@ -15,8 +19,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: CD to src/frontend
-        run: cd ./src/frontend
       - name: Install dependencies
         run: npm ci
       - name: Test
