@@ -1,12 +1,8 @@
-import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom"
-import Homepage from './pages/homepage/Homepage';
-import Room from './pages/room/Room';
-import NotFound from './pages/notfound/NotFound';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/homepage/Homepage";
+import Room from "./pages/room/Room";
+import NotFound from "./pages/notfound/NotFound";
 
 function App() {
   return (
