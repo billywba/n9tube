@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-function VideoSearchInput(setCurrentVideoURL) {
+function VideoSearchInput({ setCurrentVideoURL }) {
     
     const [videoSearchInputText, setVideoSearchInputText] = useState('');
 
     const handleWatchButtonOnClick = () => {
         console.log(`Loading ${videoSearchInputText}`);
+        setCurrentVideoURL(videoSearchInputText);
     }
 
     const handleVideoSearchInputChange = (event) => {

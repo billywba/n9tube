@@ -4,19 +4,19 @@ import VideoSearchInput from '../video/VideoSearch';
 
 function Room() {
 
-    const [currentVideoURL, setCurrentVideoURL] = useState('https://www.youtube.com/watch?v=fizcJUBCx5Y-U' );
+    const [currentVideoURL, setCurrentVideoURL] = useState('https://www.youtube.com/watch?v=fizcJUBCx5Y-U');
 
     return (
         <>
             {/* <h1>ROOM</h1> */}
 
-            <VideoSearchInput />
+            <VideoSearchInput setCurrentVideoURL={setCurrentVideoURL}/>
 
             <ReactPlayer 
                 url={currentVideoURL} 
                 width='1280px' 
                 height='720px'
-                controls='1'
+                controls={true}
             />
         </>
     );
