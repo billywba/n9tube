@@ -16,7 +16,7 @@ jobs:
           node-version: 18
 
       - name: CD to src/frontend
-        run: cd src/frontend
+        run: cd ./src/frontend
       - name: Install dependencies
         run: npm ci
       - name: Test
