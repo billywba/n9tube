@@ -2,6 +2,6 @@
     "arrowParens": "always",
     "bracketSameLine": false,
     "tabWidth": 2,
-    "trailingComma": "es5",
+    "trailingComma" : "none",
     "semi": true
 }
