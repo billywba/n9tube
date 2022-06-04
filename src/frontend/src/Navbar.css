@@ -1,0 +1,12 @@
+.Navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.Item {
+    padding-left: 5%;
+}
+
+.Icon {
+   margin-left: auto;
+}
