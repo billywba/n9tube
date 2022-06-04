@@ -8,11 +8,15 @@ function ViewerList({ viewerList }) {
     <>
       <p className="text-white">Current Viewers</p>
       <ul>
-        {viewerList.map((viewer, index) => (
-          <li key={index} className="text-white">
-            {viewer.username}
-          </li>
-        ))}
+        {viewerList.length > 0 ? (
+          viewerList.map((viewer, index) => (
+            <li key={index} className="text-white">
+              {viewer.username}
+            </li>
+          ))
+        ) : (
+          <p>No other viewers</p>
+        )}
       </ul>
     </>
   );

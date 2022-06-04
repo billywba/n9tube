@@ -14,7 +14,7 @@ test("VideoSearch renders a list of viewer's usernames", () => {
   expect(getByText(/yadk le in csgo/)).toBeInTheDocument();
 });
 
-test("VideoSearch renders no other viewers when no users connected", () => {
+test("VideoSearch renders 'No other viewers' when no users connected", () => {
   const testViewerList = [];
   const { getByText } = render(<ViewerList viewerList={testViewerList} />);
 
