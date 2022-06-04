@@ -11,15 +11,14 @@ import NotFound from './pages/notfound/NotFound';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <header className="App-header bg-slate-900"> 
+      <header className="bg-slate-1000" /> 
+       <div className="App bg-zinc-900">
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/room" element={<Room />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </header>
-      </div>
+       </div>
     </BrowserRouter>
   );
 }
