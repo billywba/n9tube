@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header className="App-header">
+        <header className="App-header bg-slate-900"> 
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/room" element={<Room />} />
