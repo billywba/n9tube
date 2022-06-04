@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import VideoSearchInput from "../../components/video/VideoSearch";
-import ViewerList from "../../components/video/ViewerList";
+import ViewerList from "../../components/viewerlist/ViewerList";
 
 function Room() {
   // Contains an array of current connected viewers
