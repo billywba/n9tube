@@ -4,6 +4,7 @@ import VideoSearchInput from "../../components/video/VideoSearch";
 import ViewerList from "../../components/ViewerList/ViewerList";
 
 function Room() {
+  // Contains an array of current connected viewers
   const [viewerList] = useState([
     {
       username: "test"
@@ -13,6 +14,7 @@ function Room() {
     }
   ]);
 
+  // Stores current video URL source
   const [currentVideoURL, setCurrentVideoURL] = useState(
     "https://www.youtube.com/watch?v=fizcJUBCx5Y-U"
   );

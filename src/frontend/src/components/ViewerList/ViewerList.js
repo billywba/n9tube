@@ -1,3 +1,8 @@
+/**
+ * Renders a basic <ul> with a list of current viewer's usernames
+ * @param {Object[]} viewerList - list of viewer objects, containing a 'username' property
+ * @returns
+ */
 function ViewerList({ viewerList }) {
   return (
     <>
