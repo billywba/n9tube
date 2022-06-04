@@ -1,0 +1,9 @@
+{
+  "name": "n9tube-backend",
+  "version": "0.0.1",
+  "description": "n9tube backend",
+  "main": "Server.js",
+  "dependencies": {
+    "socket.io": "^4.5.1"
+  }
+}
