@@ -15,8 +15,14 @@ test("VideoSearch input allows for video URL entry", () => {
   fireEvent.change(inputEl, {
     target: {
       value: "https://www.youtube.com/watch?v=Raxy3ZufLiA"
-    },
+    }
   });
 
   expect(inputEl.value).toBe("https://www.youtube.com/watch?v=Raxy3ZufLiA");
+});
+
+test("VideoSearch renders Watch button", () => {
+  const { getByText } = render(<VideoSearch />);
+
+  expect(getByText(/Watch/)).toBeInTheDocument();
 });
