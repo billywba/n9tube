@@ -10,12 +10,36 @@ function VideoSearchInput({ setCurrentVideoURL }) {
    */
   const [videoSearchInputText, setVideoSearchInputText] = useState("");
 
-  /**
-   * When watch is clicked, set the video player to the URL
-   */
   const handleWatchButtonOnClick = () => {
-    console.log(`Loading ${videoSearchInputText}`);
-    setCurrentVideoURL(videoSearchInputText);
+    /**
+     * When watch is clicked, set the video player to the URL
+     * '/' is the filter for URLs
+     */
+    if (videoSearchInputText.includes('/')) {
+      console.log(`Loading ${videoSearchInputText}`);
+      setCurrentVideoURL(videoSearchInputText);
+    }
+    /**
+     * If the search field is left empty, alert the user that nothing has been entered
+     */
+    else if (videoSearchInputText == "") {
+      console.log("You entered nothing");
+      setCurrentVideoURL(videoSearchInputText);
+    }
+    /**
+     * If the user does not enter a link, return relevant search results from YouTube
+     * Needs to use YouTube API
+     */
+    else {
+      let arrayOfSearchResults = [];
+
+      for (let i = 0; i < 5; i++) {
+        let video = video[i]
+        arrayOfSearchResults.append(video)
+      }
+      return arrayOfSearchResults;
+      setCurrentVideoURL("https://www.youtube.com/watch?v=PMi4TMJvHzA");
+    }
   };
 
   /**
