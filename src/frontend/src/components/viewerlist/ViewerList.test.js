@@ -16,7 +16,10 @@ test("VideoSearch renders a list of viewer's usernames", () => {
 
 test("VideoSearch renders 'No other viewers' when no users connected", () => {
   const testViewerList = [];
-  const { getByText } = render(<ViewerList viewerList={testViewerList} />);
+  const { getByText, queryByText } = render(
+    <ViewerList viewerList={testViewerList} />
+  );
 
   expect(getByText(/No other viewers/)).toBeInTheDocument();
+  expect(queryByText(/test_user_1/)).toBeNull();
 });
