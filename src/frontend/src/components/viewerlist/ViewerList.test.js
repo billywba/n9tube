@@ -14,7 +14,7 @@ test("VideoSearch renders a list of viewer's usernames", () => {
   expect(getByText(/yadk le in csgo/)).toBeInTheDocument();
 });
 
-test("VideoSearch renders 'No other viewers' when no users connected", () => {
+test("VideoSearch renders 'No other viewers' when no users in prop", () => {
   const testViewerList = [];
   const { getByText, queryByText } = render(
     <ViewerList viewerList={testViewerList} />
@@ -24,7 +24,7 @@ test("VideoSearch renders 'No other viewers' when no users connected", () => {
   expect(queryByText(/test_user_1/)).toBeNull();
 });
 
-test("VideoSearch adds a new user to the list when updated", () => {
+test("VideoSearch renders a new user to the list when user is added to prop", () => {
   let testViewerList = [
     { username: "test_user_1" },
     { username: "yadk le in csgo" },
@@ -42,4 +42,22 @@ test("VideoSearch adds a new user to the list when updated", () => {
   expect(getByText(/test_user_1/)).toBeInTheDocument();
   expect(getByText(/yadk le in csgo/)).toBeInTheDocument();
   expect(getByText(/new_user_connected/)).toBeInTheDocument();
+});
+
+test("VideoSearch rerenders 'No other viewers' when users removed from prop", () => {
+  let testViewerList = [
+    { username: "test_user_1" },
+    { username: "yadk le in csgo" }
+  ];
+
+  const { rerender, getByText, queryByText } = render(
+    <ViewerList viewerList={testViewerList} />
+  );
+
+  // Set list to no viewers
+  testViewerList = [];
+
+  rerender(<ViewerList viewerList={testViewerList} />);
+  expect(getByText(/No other viewers/)).toBeInTheDocument();
+  expect(queryByText(/test_user_1/)).toBeNull();
 });
