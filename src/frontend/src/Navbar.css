@@ -6,6 +6,9 @@
 
 .Item {
     padding-left: 3%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .Settings {

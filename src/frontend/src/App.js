@@ -11,13 +11,13 @@ function App() {
       <header className="bg-slate-1000">
         <Navbar />  
       </header> 
-       <div className="App bg-zinc-900">
+      <div className="App bg-zinc-900">
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/room" element={<Room />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-       </div>
+      </div>
     </BrowserRouter>
   );
 }
