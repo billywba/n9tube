@@ -1,12 +1,13 @@
 .Navbar {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .Item {
-    padding-left: 5%;
+    padding-left: 3%;
 }
 
-.Icon {
+.Settings {
    margin-left: auto;
 }
