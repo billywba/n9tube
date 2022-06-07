@@ -10,10 +10,14 @@ const io = new Server(server, {
   }
 });
 
+current_connected_users = [];
+
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
+  current_connected_users.push({ username: socket.id });
+  socket.emit("room:user_join", current_connected_users);
 
-  io.emit("room:user_join", socket.id);
+  io.emit("room:user_join", current_connected_users);
 });
 
 server.listen(3001, () => {
