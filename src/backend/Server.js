@@ -18,6 +18,15 @@ io.on("connection", (socket) => {
   socket.emit("room:user_join", current_connected_users);
 
   io.emit("room:user_join", current_connected_users);
+
+  socket.on("disconnect", () => {
+    console.log(`${socket.id} disconnected`);
+    current_connected_users = current_connected_users.filter(
+      (conn) => conn.username != socket.id
+    );
+    io.emit("room:user_join", current_connected_users);
+    console.log(current_connected_users);
+  });
 });
 
 server.listen(3001, () => {
