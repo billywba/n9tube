@@ -20,7 +20,15 @@ function Room() {
 
     socket.on("connect", () => {
       console.log(socket.id);
-      setViewerList((viewerList) => [...viewerList, { username: socket.id }]);
+      // setViewerList((viewerList) => [...viewerList, { username: socket.id }]);
+    });
+
+    socket.on("room:user_join", (new_user_socketid) => {
+      console.log(new_user_socketid);
+      setViewerList((viewerList) => [
+        ...viewerList,
+        { username: new_user_socketid }
+      ]);
     });
   }, [socket]);
 

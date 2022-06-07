@@ -12,6 +12,8 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
+
+  io.emit("room:user_join", socket.id);
 });
 
 server.listen(3001, () => {
