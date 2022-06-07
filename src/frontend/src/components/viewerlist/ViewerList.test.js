@@ -56,8 +56,8 @@ test("VideoSearch rerenders 'No other viewers' when users removed from prop", ()
 
   // Set list to no viewers
   testViewerList = [];
-
   rerender(<ViewerList viewerList={testViewerList} />);
+
   expect(getByText(/No other viewers/)).toBeInTheDocument();
   expect(queryByText(/test_user_1/)).toBeNull();
 });
