@@ -8,7 +8,7 @@ const socket = io.connect("http://localhost:3001");
 
 function Room() {
   // Contains an array of objects of current connected viewers
-  const [viewerList] = useState([]);
+  const [viewerList, setViewerList] = useState([]);
 
   // Stores current video URL source
   const [currentVideoURL, setCurrentVideoURL] = useState(
@@ -18,7 +18,10 @@ function Room() {
   useEffect(() => {
     console.log("Connected to room");
 
-    socket.on("connect", () => console.log(socket.id));
+    socket.on("connect", () => {
+      console.log(socket.id);
+      setViewerList((viewerList) => [...viewerList, { username: socket.id }]);
+    });
   }, [socket]);
 
   return (

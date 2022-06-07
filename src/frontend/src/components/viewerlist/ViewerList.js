@@ -15,7 +15,7 @@ function ViewerList({ viewerList }) {
             </li>
           ))
         ) : (
-          <p>No other viewers</p>
+          <p className="text-white">No other viewers</p>
         )}
       </ul>
     </>
