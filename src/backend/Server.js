@@ -15,8 +15,6 @@ current_connected_users = [];
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
   current_connected_users.push({ username: socket.id });
-  socket.emit("room:user_join", current_connected_users);
-
   io.emit("room:user_join", current_connected_users);
 
   socket.on("disconnect", () => {
@@ -24,6 +22,7 @@ io.on("connection", (socket) => {
     current_connected_users = current_connected_users.filter(
       (conn) => conn.username != socket.id
     );
+    // TODO: Change from room:user_join to room:update_viewers
     io.emit("room:user_join", current_connected_users);
     console.log(current_connected_users);
   });
