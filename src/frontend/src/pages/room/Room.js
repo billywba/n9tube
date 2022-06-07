@@ -4,7 +4,10 @@ import VideoSearchInput from "../../components/video/VideoSearch";
 import ViewerList from "../../components/viewerlist/ViewerList";
 import io from "socket.io-client";
 
+
 const socket = io.connect("http://localhost:3001");
+
+
 
 function Room() {
   // Contains an array of objects of current connected viewers
@@ -22,6 +25,11 @@ function Room() {
       console.log(socket.id);
       // setViewerList((viewerList) => [...viewerList, { username: socket.id }]);
     });
+
+    // all clients receive video url, set the currentvideourl state and video will be displayed in all browers connected to socket
+    socket.on("videourl", (url) => {
+      setCurrentVideoURL(url);
+    })
 
     socket.on("room:user_join", (new_user_socketid) => {
       console.log(new_user_socketid);

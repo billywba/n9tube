@@ -17,6 +17,17 @@ io.on("connection", (socket) => {
   current_connected_users.push({ username: socket.id });
   io.emit("room:user_join", current_connected_users);
 
+
+  socket.on("videoTextInput", (videoTextInput) => {
+    io.emit("vidSearchInput", videoTextInput);
+  })
+
+  // watch button now clicked, server listening for video event which holds video url from client
+  socket.on("video", (url) => {
+    // broadcast the url back to all clients connected to the socket
+    io.emit("videourl", url)
+  })
+
   socket.on("disconnect", () => {
     console.log(`${socket.id} disconnected`);
     current_connected_users = current_connected_users.filter(
