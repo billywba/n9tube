@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactPlayer from "react-player/youtube";
 import VideoSearchInput from "../../components/video/VideoSearch";
 import ViewerList from "../../components/viewerlist/ViewerList";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:3001");
 
 function Room() {
   // Contains an array of objects of current connected viewers
@@ -11,6 +14,12 @@ function Room() {
   const [currentVideoURL, setCurrentVideoURL] = useState(
     "https://www.youtube.com/watch?v=fizcJUBCx5Y-U"
   );
+
+  useEffect(() => {
+    console.log("Connected to room");
+
+    socket.on("connect", () => console.log(socket.id));
+  }, [socket]);
 
   return (
     <>

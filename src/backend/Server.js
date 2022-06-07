@@ -1,7 +1,19 @@
-var http = require("http").createServer().listen(9999, "0.0.0.0");
+const express = require("express");
+const app = express();
+const http = require("http");
+const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(http);
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000"
+  }
+});
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
+  console.log(`User connected: ${socket.id}`);
+});
+
+server.listen(3001, () => {
+  console.log("listening on *:3001");
 });
