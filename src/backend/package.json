@@ -5,5 +5,8 @@
   "main": "Server.js",
   "dependencies": {
     "socket.io": "^4.5.1"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
   }
 }
