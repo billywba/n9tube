@@ -3,7 +3,7 @@ import { Dropdown } from "flowbite-react"
 
 function Navbar() {
     return (
-        <div className="flex-row flex bg-zinc-800 text-white px-8 py-5 justify-between min-h-[8vh]">
+        <div className="flex-row flex bg-zinc-800 text-white px-8 py-5 justify-between min-h-[6vh]">
             <div className="items-center flex justify-center space-x-4">
                 <b>N9Tube</b>
 
