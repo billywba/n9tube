@@ -4,6 +4,7 @@ import { useState } from "react";
  * Provides input field and button for user to update the current video playing
  * @param {function} setCurrentVideoURL - function to update the video player URL prop
  */
+
 function VideoSearchInput({ setCurrentVideoURL }) {
   /**
    * Holds the current text in the search input element
@@ -32,13 +33,13 @@ function VideoSearchInput({ setCurrentVideoURL }) {
      */
     else {
       let arrayOfSearchResults = [];
-
-      for (let i = 0; i < 5; i++) {
-        let video = video[i]
-        arrayOfSearchResults.append(video)
-      }
-      return arrayOfSearchResults;
-      setCurrentVideoURL("https://www.youtube.com/watch?v=PMi4TMJvHzA");
+      return console.log("test");
+      // for (let i = 0; i < 5; i++) {
+      //   let video = video[i]
+      //   arrayOfSearchResults.append(video)
+      // }
+      // return arrayOfSearchResults;
+      // setCurrentVideoURL("https://www.youtube.com/watch?v=PMi4TMJvHzA");
     }
   };
 
@@ -49,6 +50,16 @@ function VideoSearchInput({ setCurrentVideoURL }) {
   const handleVideoSearchInputChange = (event) => {
     setVideoSearchInputText(event.target.value);
   };
+
+  // async function getSearchResults() {
+  //   // google.options({auth});
+  
+  //   const res = await youtube.search.list({
+  //     part: 'id,snippet',
+  //     q: 'Node.js on Google Cloud',
+  //   });
+  //   console.log(res.data);
+  // }
 
   return (
     <>
