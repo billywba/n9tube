@@ -11,11 +11,6 @@ root.render(
   </React.StrictMode>
 );
 
-const {google} = require('googleapis');
-const youtube = google.youtube({
-  version: 'v3',
-  auth: 'AIzaSyAtUQa8-AUi0EqCfaGfVD491l3pbhmb_9Y'});
-
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
