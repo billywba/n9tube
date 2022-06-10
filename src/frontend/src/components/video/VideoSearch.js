@@ -1,5 +1,5 @@
+import axios from "axios";
 import { useState } from "react";
-
 /**
  * Provides input field and button for user to update the current video playing
  * @param {function} setCurrentVideoURL - function to update the video player URL prop
@@ -21,25 +21,22 @@ function VideoSearchInput({ setCurrentVideoURL }) {
       setCurrentVideoURL(videoSearchInputText);
     }
     /**
-     * If the search field is left empty, alert the user that nothing has been entered
+     * If the search field is left empty, log in console that nothing has been entered
      */
     else if (videoSearchInputText == "") {
       console.log("You entered nothing");
       setCurrentVideoURL(videoSearchInputText);
     }
     /**
-     * If the user does not enter a link, return relevant search results from YouTube
-     * Needs to use YouTube API
+     * If the user does not enter a link, log relevant search results from YouTube
      */
     else {
-      let arrayOfSearchResults = [];
-      return console.log("test");
-      // for (let i = 0; i < 5; i++) {
-      //   let video = video[i]
-      //   arrayOfSearchResults.append(video)
-      // }
-      // return arrayOfSearchResults;
-      // setCurrentVideoURL("https://www.youtube.com/watch?v=PMi4TMJvHzA");
+      const options = {
+        method: 'GET',
+        url: 'http://localhost:8000',
+        params: {search: videoSearchInputText},
+      }
+      axios.request(options)
     }
   };
 
@@ -50,16 +47,6 @@ function VideoSearchInput({ setCurrentVideoURL }) {
   const handleVideoSearchInputChange = (event) => {
     setVideoSearchInputText(event.target.value);
   };
-
-  // async function getSearchResults() {
-  //   // google.options({auth});
-  
-  //   const res = await youtube.search.list({
-  //     part: 'id,snippet',
-  //     q: 'Node.js on Google Cloud',
-  //   });
-  //   console.log(res.data);
-  // }
 
   return (
     <>
