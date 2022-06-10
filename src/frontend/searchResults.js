@@ -11,7 +11,7 @@ const {google} = require('googleapis');
  */
 const youtube = google.youtube({
   version: 'v3',
-  auth: 'AIzaSyAtUQa8-AUi0EqCfaGfVD491l3pbhmb_9Y'});
+  auth: 'YOUR-API-KEY'});
   
 const app = express();
 app.use(cors());
