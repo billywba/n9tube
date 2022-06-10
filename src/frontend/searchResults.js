@@ -9,9 +9,10 @@ const {google} = require('googleapis');
 /**
  * Define YouTube api version and key
  */
+require('dotenv').config()
 const youtube = google.youtube({
   version: 'v3',
-  auth: 'YOUR-API-KEY'});
+  auth: process.env.IM_THE_BEST_TROLL});
   
 const app = express();
 app.use(cors());
