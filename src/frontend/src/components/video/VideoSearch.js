@@ -23,7 +23,7 @@ function VideoSearchInput({ setCurrentVideoURL }) {
     /**
      * If the search field is left empty, log in console that nothing has been entered
      */
-    else if (videoSearchInputText == "") {
+    else if (videoSearchInputText === "") {
       console.log("You entered nothing");
       setCurrentVideoURL(videoSearchInputText);
     }
