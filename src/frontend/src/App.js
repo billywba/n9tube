@@ -8,17 +8,20 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <BrowserRouter>
-      <header className="bg-slate-1000">
-        <Navbar />  
-      </header> 
-      <div className="App bg-zinc-900">
+      <div className="flex flex-col h-screen w-screen">
+        <header className="min-h-[6vh] bg-slate-1000">
+          <Navbar />
+        </header>
+        <div className="App w-screen h-screen bg-zinc-900">
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/room" element={<Room />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+        </div>
       </div>
     </BrowserRouter>
+
   );
 }
 
