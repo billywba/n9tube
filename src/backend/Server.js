@@ -1,8 +1,16 @@
-const httpServer = require("http").createServer();
+const express = require("express");
+const app = express();
+const http = require("http");
+const httpServer = http.createServer(app);
+
 const io = require("socket.io")(httpServer, {
   cors: {
     origin: "http://localhost:3000"
   }
+});
+
+app.get("/api/test", (req, res) => {
+  res.send("test");
 });
 
 current_connected_users = [];

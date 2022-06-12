@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "n9tube backend",
   "main": "Server.js",
-  "dependencies": {
-    "socket.io": "^4.5.1"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "devDependencies": {
-    "jest": "^28.1.0"
+  "dependencies": {
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
   }
 }
