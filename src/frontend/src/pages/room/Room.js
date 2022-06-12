@@ -4,8 +4,6 @@ import VideoSearchInput from "../../components/video/VideoSearch";
 import ViewerList from "../../components/viewerlist/ViewerList";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:3001");
-
 function Room() {
   // Contains an array of objects of current connected viewers
   const [viewerList, setViewerList] = useState([]);
@@ -16,6 +14,7 @@ function Room() {
   );
 
   useEffect(() => {
+    const socket = io.connect("http://localhost:3001");
     console.log("Connected to room");
 
     socket.on("connect", () => {
@@ -26,7 +25,7 @@ function Room() {
     socket.on("room:update_viewer_list", (updatedViewerList) => {
       setViewerList(updatedViewerList);
     });
-  }, [socket]);
+  }, []);
 
   return (
     <>
