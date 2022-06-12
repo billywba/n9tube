@@ -32,7 +32,13 @@ function VideoSearchInput({ setCurrentVideoURL }) {
         onChange={handleVideoSearchInputChange}
         placeholder="Enter YouTube URL"
       />
-      <button onClick={handleWatchButtonOnClick}>Watch</button>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 
+          text-white font-bold py-2 px-4 border rounded"
+        onClick={handleWatchButtonOnClick}
+      >
+        Watch
+      </button>
     </>
   );
 }
