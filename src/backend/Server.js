@@ -13,26 +13,32 @@ app.get("/api/test", (req, res) => {
   res.send("test");
 });
 
+// Stores socket id of current connected clients
 let currentConnectedUsers = [];
 
 io.on("connection", (socket) => {
+  // New client joined, log and update array
   console.log(`User connected: ${socket.id}`);
   currentConnectedUsers.push({ username: socket.id });
 
-  // When a new user joins, update the viewer list for everyone
+  // Update the viewer list for every client
   io.emit("room:update_viewer_list", currentConnectedUsers);
 
+  // Client disconnects
   socket.on("disconnect", () => {
+    // Remove and removed socket id from array
     console.log(`${socket.id} disconnected`);
     currentConnectedUsers = currentConnectedUsers.filter(
       (conn) => conn.username != socket.id
     );
-    // TODO: Change from room:user_join to room:update_viewers
-    io.emit("room:user_join", currentConnectedUsers);
+
+    // Update viewer list with array of current clients
+    io.emit("room:update_viewer_list", currentConnectedUsers);
     console.log(currentConnectedUsers);
   });
 });
 
+// Start server
 httpServer.listen(3001, () => {
-  console.log("listening on *:3001");
+  console.log("Sever starting on port 3001");
 });
