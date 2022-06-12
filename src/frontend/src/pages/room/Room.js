@@ -23,9 +23,8 @@ function Room() {
       // setViewerList((viewerList) => [...viewerList, { username: socket.id }]);
     });
 
-    socket.on("room:user_join", (new_user_socketid) => {
-      console.log(new_user_socketid);
-      setViewerList(new_user_socketid);
+    socket.on("room:update_viewer_list", (updatedViewerList) => {
+      setViewerList(updatedViewerList);
     });
   }, [socket]);
 

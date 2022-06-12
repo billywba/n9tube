@@ -13,21 +13,23 @@ app.get("/api/test", (req, res) => {
   res.send("test");
 });
 
-current_connected_users = [];
+let currentConnectedUsers = [];
 
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
-  current_connected_users.push({ username: socket.id });
-  io.emit("room:user_join", current_connected_users);
+  currentConnectedUsers.push({ username: socket.id });
+
+  // When a new user joins, update the viewer list for everyone
+  io.emit("room:update_viewer_list", currentConnectedUsers);
 
   socket.on("disconnect", () => {
     console.log(`${socket.id} disconnected`);
-    current_connected_users = current_connected_users.filter(
+    currentConnectedUsers = currentConnectedUsers.filter(
       (conn) => conn.username != socket.id
     );
     // TODO: Change from room:user_join to room:update_viewers
-    io.emit("room:user_join", current_connected_users);
-    console.log(current_connected_users);
+    io.emit("room:user_join", currentConnectedUsers);
+    console.log(currentConnectedUsers);
   });
 });
 
