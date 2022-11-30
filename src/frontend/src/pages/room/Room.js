@@ -12,10 +12,15 @@ const socket = io.connect("http://localhost:3001");
 function Room() {
   // Contains an array of objects of current connected viewers
   const [viewerList, setViewerList] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [volume, setVolume] = useState(0);
 
   // Stores current video URL source
   const [currentVideoURL, setCurrentVideoURL] = useState(
-    "https://www.youtube.com/watch?v=fizcJUBCx5Y-U"
+    // "https://www.youtube.com/watch?v=fizcJUBCx5Y-U"
+    "https://www.youtube.com/watch?v=q3ATfbYXqpc"
   );
 
   useEffect(() => {
@@ -31,11 +36,37 @@ function Room() {
       setCurrentVideoURL(url);
     })
 
+    socket.on("onstart", (isStart) => {
+      setIsPlaying(isStart);
+    })
+
+    socket.on("onready", (isReady) => {
+      setIsReady(isReady);
+      console.log(isReady);
+    })
+
     socket.on("room:user_join", (new_user_socketid) => {
       console.log(new_user_socketid);
       setViewerList(new_user_socketid);
     });
   }, [socket]);
+
+  const onPlay = () => {
+    // setMuted(true);
+    // setVolume(0)
+    socket.emit("start", true)
+    setIsPlaying(true)
+
+  }
+
+  const onPause = () => {
+    socket.emit("start", false)
+    setIsPlaying(false);
+  }
+
+  const onReady = () => {
+    socket.emit("ready", true)
+  }
 
   return (
     <>
@@ -48,6 +79,13 @@ function Room() {
         width="1280px"
         height="720px"
         controls={true}
+        muted={muted}
+        volume={volume}
+        // onStart={onStart}
+        onReady={onReady}
+        onPlay={onPlay}
+        onPause={onPause}
+        playing={isPlaying}
       />
 
       <ViewerList viewerList={viewerList} />

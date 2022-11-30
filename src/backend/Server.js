@@ -18,14 +18,23 @@ io.on("connection", (socket) => {
   io.emit("room:user_join", current_connected_users);
 
 
-  socket.on("videoTextInput", (videoTextInput) => {
-    io.emit("vidSearchInput", videoTextInput);
-  })
+  // socket.on("videoTextInput", (videoTextInput) => {
+  //   io.emit("vidSearchInput", videoTextInput);
+  // })
 
   // watch button now clicked, server listening for video event which holds video url from client
   socket.on("video", (url) => {
     // broadcast the url back to all clients connected to the socket
     io.emit("videourl", url)
+  })
+
+  socket.on("start", (isStart) => {
+    console.log("received:" + isStart);
+    io.emit("onstart", isStart)
+  })
+
+  socket.on("ready", (isReady) => {
+    io.emit("onready", isReady)
   })
 
   socket.on("disconnect", () => {

@@ -16,11 +16,11 @@ function VideoSearchInput({ setCurrentVideoURL }) {
    */
   const [videoSearchInputText, setVideoSearchInputText] = useState("");
 
-  useEffect(() => {
-    socket.on("vidSearchInput", (msg) => {
-      setVideoSearchInputText(msg)
-    });
-  }, [socket])
+  // useEffect(() => {
+  //   socket.on("vidSearchInput", (msg) => {
+  //     setVideoSearchInputText(msg)
+  //   });
+  // }, [socket])
 
   /**
    * When watch is clicked, set the video player to the URL
@@ -37,7 +37,7 @@ function VideoSearchInput({ setCurrentVideoURL }) {
    * @param {*} event
    */
   const handleVideoSearchInputChange = (event) => {
-    socket.emit("videoTextInput", event.target.value)
+    // socket.emit("videoTextInput", event.target.value)
     setVideoSearchInputText(event.target.value);
   };
 
@@ -45,7 +45,7 @@ function VideoSearchInput({ setCurrentVideoURL }) {
     <>
       <input
         type="text"
-        value={videoSearchInputText}
+
         onChange={handleVideoSearchInputChange}
         placeholder="Enter YouTube URL"
       />
